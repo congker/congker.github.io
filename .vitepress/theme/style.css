@@ -133,6 +133,149 @@
   display: none;
 }
 
+.VPNavBarSearch.search {
+  display: none !important;
+}
+
+.blog-search {
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+}
+
+.blog-search-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 55px;
+  border: 0;
+  background: transparent;
+  color: var(--vp-c-text-2);
+  cursor: pointer;
+}
+
+.blog-search-icon {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+}
+
+.blog-search-text,
+.blog-search-key {
+  display: none;
+}
+
+.blog-search-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+}
+
+.blog-search-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: var(--vp-backdrop-bg-color);
+}
+
+.blog-search-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(100vw - 60px, 760px);
+  max-height: min(100vh - 128px, 720px);
+  margin: 64px auto;
+  padding: 12px;
+  border-radius: 6px;
+  background: var(--vp-c-bg);
+  box-shadow: var(--vp-shadow-4);
+}
+
+.blog-search-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 12px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+}
+
+.blog-search-input-row:focus-within {
+  border-color: var(--vp-c-brand-1);
+}
+
+.blog-search-input {
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--vp-c-text-1);
+  font-size: 16px;
+}
+
+.blog-search-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--vp-c-text-2);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.blog-search-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+  overflow: auto;
+}
+
+.blog-search-state {
+  margin: 0;
+  padding: 16px 8px;
+  color: var(--vp-c-text-2);
+  font-size: 14px;
+  text-align: center;
+}
+
+.blog-search-result {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+}
+
+.blog-search-result:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+}
+
+.blog-search-result-title {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.blog-search-result-path {
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
 @media (min-width: 960px) {
   .sidebar-collapse-toggle {
     position: fixed;
@@ -203,12 +346,6 @@
     padding-left: var(--vp-sidebar-width) !important;
   }
 
-  .VPNavBarSearch {
-    flex-grow: 0 !important;
-    margin-right: 16px;
-    padding-left: 0 !important;
-  }
-
   .sidebar-collapsed .VPSidebar {
     width: 0 !important;
     padding-right: 0 !important;
@@ -225,7 +362,63 @@
   }
 }
 
+@media (min-width: 768px) {
+  .blog-search {
+    margin-right: 16px;
+  }
+
+  .blog-search-button {
+    justify-content: flex-start;
+    width: auto;
+    height: 40px;
+    padding: 0 10px 0 12px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: var(--vp-c-bg-alt);
+  }
+
+  .blog-search-button:hover {
+    border-color: var(--vp-c-brand-1);
+  }
+
+  .blog-search-text,
+  .blog-search-key {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .blog-search-text {
+    margin-left: 8px;
+    color: var(--vp-c-text-2);
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .blog-search-key {
+    margin-left: 12px;
+    padding: 0 6px;
+    height: 22px;
+    border: 1px solid var(--vp-c-divider);
+    border-radius: 4px;
+    color: var(--vp-c-text-2);
+    font-size: 12px;
+    line-height: 22px;
+  }
+}
+
 @media (max-width: 640px) {
+  .blog-search {
+    margin-right: 4px;
+  }
+
+  .blog-search-panel {
+    width: 100vw;
+    height: 100vh;
+    max-height: none;
+    margin: 0;
+    border-radius: 0;
+  }
+
   .blog-home {
     width: min(100% - 32px, 1120px);
     padding: 20px 0 64px;

@@ -2,6 +2,7 @@
 import DefaultTheme from 'vitepress/theme'
 import { useRoute } from 'vitepress'
 import { computed, onMounted, ref, watch } from 'vue'
+import BlogSearch from './BlogSearch.vue'
 
 const DefaultLayout = DefaultTheme.Layout
 const storageKey = 'blog-sidebar-collapsed'
@@ -34,7 +35,11 @@ watch([collapsed, showToggle], syncClass)
 </script>
 
 <template>
-  <DefaultLayout />
+  <DefaultLayout>
+    <template #nav-bar-content-before>
+      <BlogSearch />
+    </template>
+  </DefaultLayout>
   <button
     v-if="mounted && showToggle"
     class="sidebar-collapse-toggle"
