@@ -14,7 +14,7 @@ if "%~1"=="" (
   set "COMMIT_MSG=%~1"
 )
 
-echo [1/5] Checking source branch...
+echo [1/6] Checking source branch...
 git rev-parse --is-inside-work-tree >nul 2>&1
 if errorlevel 1 (
   echo This directory is not a git repository.
@@ -35,7 +35,7 @@ if errorlevel 1 (
   git remote set-url origin %REPO%
 )
 
-echo [2/5] Committing source changes...
+echo [2/6] Committing source changes if needed...
 git add .
 git diff --cached --quiet
 if errorlevel 1 (
@@ -45,15 +45,15 @@ if errorlevel 1 (
   echo No source changes to commit.
 )
 
-echo [3/5] Pushing source branch...
+echo [3/6] Pushing source branch...
 git push origin source
 if errorlevel 1 exit /b 1
 
-echo [4/5] Building site...
+echo [4/6] Building site...
 call npm run build
 if errorlevel 1 exit /b 1
 
-echo [5/5] Deploying dist to main branch...
+echo [5/6] Publishing .vitepress/dist to main...
 if exist "%DEPLOY_DIR%" rmdir /s /q "%DEPLOY_DIR%"
 mkdir "%DEPLOY_DIR%"
 xcopy ".vitepress\dist\*" "%DEPLOY_DIR%\" /E /I /Y >nul
@@ -72,8 +72,8 @@ git -C "%DEPLOY_DIR%" remote add origin %REPO%
 git -C "%DEPLOY_DIR%" push origin main --force
 if errorlevel 1 exit /b 1
 
+echo [6/6] Done.
 echo.
-echo Done.
 echo Source branch: source
 echo Pages branch: main
 echo URL: https://congker.github.io/
