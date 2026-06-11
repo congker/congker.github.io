@@ -137,13 +137,24 @@ content/社区/Harness工程指南.md
 git@github.com:congker/congker.github.io.git
 ```
 
-项目已绑定 `origin`，主分支为 `main`。
+当前分支约定：
 
-常用发布流程：
+- `source`：保存 VitePress 源码。
+- `main`：保存 `.vitepress/dist` 构建产物，供 GitHub Pages 直接发布。
+
+常用源码提交流程：
+
+```bash
+git add .
+git commit -m "Update blog"
+git push origin source
+```
+
+发布到 GitHub Pages 时，先构建：
 
 ```bash
 npm run build
-git add .
-git commit -m "Update blog"
-git push origin main
+```
+
+然后把 `.vitepress/dist` 的内容发布到远端 `main` 分支。`main` 分支不要直接提交源码文件，否则 GitHub Pages 会把 Markdown 当普通页面渲染，线上效果会和本地 VitePress 不一致。
 ```
