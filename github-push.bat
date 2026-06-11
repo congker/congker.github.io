@@ -1,5 +1,5 @@
 @echo off
-setlocal
+setlocal EnableExtensions
 
 cd /d "%~dp0"
 
@@ -42,7 +42,7 @@ if errorlevel 1 (
   git commit -m "%COMMIT_MSG%"
   if errorlevel 1 exit /b 1
 ) else (
-  echo No source changes to commit.
+  call :print_no_new_files
 )
 
 echo [3/6] Pushing source branch...
@@ -77,3 +77,8 @@ echo.
 echo Source branch: source
 echo Pages branch: main
 echo URL: https://congker.github.io/
+exit /b 0
+
+:print_no_new_files
+powershell -NoProfile -ExecutionPolicy Bypass -Command "Write-Host ([Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('5pqC5peg5paw5aKe5paH5Lu2')))"
+exit /b 0
