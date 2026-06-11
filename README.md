@@ -157,4 +157,3 @@ npm run build
 ```
 
 然后把 `.vitepress/dist` 的内容发布到远端 `main` 分支。`main` 分支不要直接提交源码文件，否则 GitHub Pages 会把 Markdown 当普通页面渲染，线上效果会和本地 VitePress 不一致。
-```
