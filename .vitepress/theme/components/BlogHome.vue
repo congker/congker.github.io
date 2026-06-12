@@ -61,7 +61,9 @@ const articleCount = categories.reduce((sum, category) => sum + category.article
       <div v-if="categories.length" class="category-grid">
         <section v-for="category in categories" :key="category.name" class="category-card">
           <div class="category-header">
-            <h2>{{ category.name }}</h2>
+            <h2>
+              <a :href="category.articles[0]?.link">{{ category.name }}</a>
+            </h2>
             <span>{{ category.articles.length }} 篇</span>
           </div>
           <ul>
