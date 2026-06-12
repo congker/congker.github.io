@@ -81,6 +81,12 @@
   letter-spacing: 0;
 }
 
+.category-header h2 a {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
 .category-header span {
   flex: none;
   color: var(--vp-c-text-3);
