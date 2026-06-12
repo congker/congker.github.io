@@ -65,7 +65,7 @@ const articleCount = categories.reduce((sum, category) => sum + category.article
             <span>{{ category.articles.length }} 篇</span>
           </div>
           <ul>
-            <li v-for="article in category.articles" :key="article.link">
+            <li v-for="article in category.articles.slice(0, 4)" :key="article.link">
               <a :href="article.link">{{ article.title }}</a>
             </li>
           </ul>
